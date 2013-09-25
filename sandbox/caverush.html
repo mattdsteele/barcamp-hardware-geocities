@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cave Rush 2600</title>
+	<meta name="viewport" content="width=device-width user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<style type="text/css">
+		html,body {
+			background-color: #333;
+			color: #fff;
+			font-family: helvetica, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+		}
+		img#rotate {
+			position: fixed;
+			width: 150px;
+			margin: auto;
+			display: none;
+			left: 0;
+			right: 0;
+		}
+		#canvas {
+			position: absolute;
+			left: 0;
+			top: 0;
+			margin: auto;
+		}
+		iframe#leadbolt {
+			position: absolute;
+			display: block;
+			margin: 0 auto;
+			z-index: 10;
+			top: 70%;
+			width: 100%;
+		}
+    #flip {
+    position: absolute;
+    right: 0;
+    }
+	</style>
+	<script src="caverush2600.min.js"></script>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+  <button id="flip">Flip!</button>
+  <script>
+    document.querySelector('#flip').addEventListener('click', function() {
+      ig.input.presses = {gravityflip: true};
+    });
+  </script>
+</body>
+</html>
