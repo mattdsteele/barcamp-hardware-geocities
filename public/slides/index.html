@@ -128,7 +128,7 @@ board.on("ready", function() {
         
         <section data-markdown>
 					<script type="text/template">
-## Light sensor
+## Potentiometer
 
 ```
 board.on("ready", function() {
@@ -151,6 +151,151 @@ board.on("ready", function() {
 ```
 					</script>
 				</section>
+
+        <section data-markdown>
+					<script type="text/template">
+## Socket.IO
+
+```
+board.on("ready", function() {
+
+  // Create a new `potentiometer` hardware instance.
+  potentiometer = new five.Sensor({
+    pin: "A2",
+    freq: 250
+  });
+
+  board.repl.inject({
+    pot: potentiometer
+  });
+
+  // "data" get the current reading from the potentiometer
+  potentiometer.on("data", function() {
+    console.log( this.value, this.raw );
+  });
+});
+```			
+          </script>
+        </section>
+        <section data-markdown>
+					<script type="text/template">
+## Demo
+
+Tousled chillwave sustainable, Brooklyn Etsy ennui bitters flexitarian chia magna aliqua squid. Aliqua Bushwick Shoreditch plaid. Aliqua put a bird on it banjo qui polaroid, cred consequat irony letterpress hella accusamus Bushwick VHS roof party hoodie. Qui laboris polaroid, keffiyeh butcher occupy vero. Marfa velit Terry Richardson salvia cardigan aesthetic, dreamcatcher ex. Ugh fugiat letterpress Williamsburg mixtape. Sustainable aliqua stumptown Banksy, drinking vinegar wayfarers ut eiusmod Carles.
+
+Hella VHS nisi, deep v proident +1 Truffaut locavore brunch leggings authentic next level Carles gentrify. Vero reprehenderit nulla chillwave, Tumblr Williamsburg master cleanse typewriter scenester. Deserunt PBR dolor sustainable, organic Pitchfork dolore. Thundercats velit four loko keffiyeh sint selvage. Slow-carb minim anim High Life, veniam Austin synth voluptate. Direct trade bespoke raw denim, fanny pack Banksy delectus Terry Richardson. Terry Richardson 3 wolf moon aute, selfies post-ironic Truffaut next level distillery deep v.
+
+Umami lo-fi drinking vinegar Carles non reprehenderit irure authentic chia. Cillum non gastropub sartorial pop-up hoodie bespoke Helvetica wolf. Intelligentsia bespoke raw denim, duis Godard dolor roof party sunt pug mollit. Blog +1 vero keytar lo-fi mollit vegan brunch, scenester next level drinking vinegar. Williamsburg PBR ugh aute, small batch pug yr mollit. Ennui cray butcher tempor, drinking vinegar ex cillum kogi salvia fugiat ugh Vice Echo Park. Nisi Intelligentsia mixtape mollit, stumptown hashtag laboris readymade cupidatat.
+
+Nulla mustache meh, in aute wolf laboris minim. Anim art party master cleanse tattooed eiusmod enim, vinyl est roof party scenester Echo Park sed dreamcatcher gentrify selfies. Laborum polaroid anim direct trade vegan. Farm-to-table retro Austin, et Wes Anderson voluptate Neutra ea chambray bicycle rights bitters fugiat irure velit scenester. Delectus gastropub Tonx banjo gentrify exercitation synth, disrupt Godard magna ethnic elit. Street art 3 wolf moon chillwave incididunt sed literally. Godard readymade assumenda street art, synth banjo authentic craft beer ethnic master cleanse kogi.
+					</script>
+				</section>
+        
+        
+        <section data-markdown>
+					<script type="text/template">
+## Light Sensor
+					</script>
+				</section>
+        
+        <section data-markdown>
+					<script type="text/template">
+## Demo
+					</script>
+				</section>
+        
+        <section data-markdown>
+					<script type="text/template">
+## Flex sensor
+					</script>
+				</section>
+        
+        <section data-markdown>
+					<script type="text/template">
+## Demo
+					</script>
+				</section>
+        
+        <section data-markdown><script type="text/template">
+## Wii Nunchuk
+					</script></section>
+        
+        <section data-markdown>
+					<script type="text/template">
+## Demo
+					</script>
+				</section>
+        
+        <section data-markdown>
+					<script type="text/template">
+## Parrot AR.Drone
+					</script>
+				</section>
+       
+        <section data-markdown><script type="text/template">
+## Let's get real
+
+### (Turns chair backwards)
+					</script></section>
+       
+       <section>
+<blockquote class="twitter-tweet"><p>Some people, when confronted with numbers, think &quot;I know, I&#39;ll add them with JavaScript.&quot; Now they have 1.99999999999997 problems.</p>&mdash; Gary Bernhardt (@garybernhardt) <a href="https://twitter.com/garybernhardt/statuses/47763404672344064">March 15, 2011</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+       </section>
+       
+        <section data-markdown><script type="text/template">
+https://twitter.com/gsiegman/statuses/368103661500891136
+https://twitter.com/gsiegman/statuses/368104836228976640
+				</script></section>
+          
+        <section data-markdown><script type="text/template">
+## Just learn C
+				</script></section>          
+
+        <section data-markdown><script type="text/template">
+# Easy
+				</script></section> 
+     
+        <section data-markdown><script type="text/template">
+## This is Really Important
+				</script></section>
+      
+        <section data-markdown><script type="text/template">
+## Geocities
+
+(Loading picture.gif)
+				</script></section>
+      
+        <section data-markdown><script type="text/template">
+> And so I made my first website. Of course it wasn’t how a professional would do it, GeoCities started you with a what-you-see-is-what-you-get editor, one that if we web developers had to use today we’d do so while crying into a gallon tub of ice cream, eating with our left hand and clicking away with our right.
+        </script></section>
+
+        <section data-markdown><script type="text/template">
+> But that’s not the point.
+        </script></section>
+        
+        <section data-markdown><script type="text/template">
+# My first website
+				</script></section> 
+
+        <section data-markdown><script type="text/template">
+# Web Designer's First Websites
+				</script></section> 
+        
+        <section data-markdown><script type="text/template">
+# Get Started
+
+* Mess with Johnny-Five
+* Play with C API
+* Learn EE skills - Ohm's Law, Voltage Dividers, etc
+* Learn soldering
+* Join a community - OMG
+				</script></section> 
+
+        <section data-markdown><script type="text/template">
+# Thanks
+				</script></section> 
+        
 			</div>
 		</div>
 
