@@ -45,9 +45,7 @@
 
 				<section data-markdown>
 					<script type="text/template">
-## Confession</h2>
-            
-<p class="fragment">I'm not a hardware person</p>
+## I'm not a hardware person
 
 <aside class="notes">
 I've never taken a class on it.
@@ -55,23 +53,19 @@ I've never taken a class on it.
           </script>
 				</section>
 
-				<section data-markdown>
+				<section data-markdown data-background="img/schematic.jpg">
 					<script type="text/template">
-## Dark Magic
+![Dark Magic](img/hardware.jpg)
 					</script>
 				</section>
         
-        <section data-markdown>
+        <section data-markdown data-background="img/arduino.jpg">
 					<script type="text/template">
-## Arduino
-          
-(image of arduino here)
 					</script>
 				</section>
         
-        <section data-markdown>
+        <section data-markdown data-background="img/dusty-electronics.jpg">
 					<script type="text/template">
-## Closet
 					</script>
 				</section>
         
@@ -83,7 +77,9 @@ I've never taken a class on it.
         
         <section data-markdown>
 					<script type="text/template">
-## Learning curve
+<h2 class="fragment">Teaching tool</h2>
+<h2 class="fragment">Project ideas</h2>
+<h2 class="fragment">Language</h2>
 					</script>
 				</section>
         
@@ -98,14 +94,18 @@ I've never taken a class on it.
         
         <section data-markdown>
 					<script type="text/template">
-## JavaScript Arduino framework
+## JavaScript
 					</script>
 				</section>
         
         <section data-markdown>
 					<script type="text/template">
-<pre><code class="javascript">
-var five = require("johnny-five"),
+```
+npm install johnny-five
+```
+
+
+<pre><code class="javascript">var five = require("johnny-five"),
 board = new five.Board();
  
 board.on("ready", function() {
@@ -118,7 +118,7 @@ board.on("ready", function() {
 </code></pre>
 
 <video controls="">
-  <source src="http://dl.dropbox.com/u/3531958/led-strobe.mp4"></source>
+  <source src="img/led-strobe.mp4"></source>
   <source src="http://dl.dropbox.com/u/3531958/led-strobe.ogv"></source>
   <source src="http://dl.dropbox.com/u/3531958/led-strobe.webm"></source>
 </video>
@@ -126,10 +126,13 @@ board.on("ready", function() {
 				</section>
         
         
-        <section data-markdown>
+        <section data-markdown data-background="img/potentiometer.jpg">
 					<script type="text/template">
 ## Potentiometer
-
+</script></section>
+        <section data-markdown data-transition="none">
+					<script type="text/template">
+## Potentiometer
 ```
 board.on("ready", function() {
 
@@ -156,7 +159,7 @@ board.on("ready", function() {
 					<script type="text/template">
 ## Socket.IO
 
-```
+<pre><code class="javascript">var socket = require('socket.io');
 board.on("ready", function() {
 
   // Create a new `potentiometer` hardware instance.
@@ -171,23 +174,53 @@ board.on("ready", function() {
 
   // "data" get the current reading from the potentiometer
   potentiometer.on("data", function() {
-    console.log( this.value, this.raw );
+  	socket.emit('potentiometer', { value: this.raw });
   });
 });
-```			
+</code></pre>
           </script>
         </section>
         <section data-markdown data-state="potentiometer">
 					<script type="text/template">
-## Demo
+## ADVENTURE  I.  A SCANDAL IN BOHEMIA
 
-Tousled chillwave sustainable, Brooklyn Etsy ennui bitters flexitarian chia magna aliqua squid. Aliqua Bushwick Shoreditch plaid. Aliqua put a bird on it banjo qui polaroid, cred consequat irony letterpress hella accusamus Bushwick VHS roof party hoodie. Qui laboris polaroid, keffiyeh butcher occupy vero. Marfa velit Terry Richardson salvia cardigan aesthetic, dreamcatcher ex. Ugh fugiat letterpress Williamsburg mixtape. Sustainable aliqua stumptown Banksy, drinking vinegar wayfarers ut eiusmod Carles.
+To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her sex. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position. He never spoke of the softer passions, save with a gibe and a sneer. They were admirable things for the observer--excellent for drawing the veil from men's motives and actions. But for the trained reasoner to admit such intrusions into his own delicate and finely adjusted temperament was to introduce a distracting factor which might throw a doubt upon all his mental results. Grit in a sensitive instrument, or a crack in one of his own high-power lenses, would not be more disturbing than a strong emotion in a nature such as his. And yet there was but one woman to him, and that woman was the late Irene Adler, of dubious and questionable memory.
 
-Hella VHS nisi, deep v proident +1 Truffaut locavore brunch leggings authentic next level Carles gentrify. Vero reprehenderit nulla chillwave, Tumblr Williamsburg master cleanse typewriter scenester. Deserunt PBR dolor sustainable, organic Pitchfork dolore. Thundercats velit four loko keffiyeh sint selvage. Slow-carb minim anim High Life, veniam Austin synth voluptate. Direct trade bespoke raw denim, fanny pack Banksy delectus Terry Richardson. Terry Richardson 3 wolf moon aute, selfies post-ironic Truffaut next level distillery deep v.
+I had seen little of Holmes lately. My marriage had drifted us away from each other. My own complete happiness, and the home-centred interests which rise up around the man who first finds himself master of his own establishment, were sufficient to absorb all my attention, while Holmes, who loathed every form of society with his whole Bohemian soul, remained in our lodgings in Baker Street, buried among his old books, and alternating from week to week between cocaine and ambition, the drowsiness of the drug, and the fierce energy of his own keen nature. He was still, as ever, deeply attracted by the study of crime, and occupied his immense faculties and extraordinary powers of observation in following out those clues, and clearing up those mysteries which had been abandoned as hopeless by the official police. From time to time I heard some vague account of his doings: of his summons to Odessa in the case of the Trepoff murder, of his clearing up of the singular tragedy of the Atkinson brothers at Trincomalee, and finally of the mission which he had accomplished so delicately and successfully for the reigning family of Holland. Beyond these signs of his activity, however, which I merely shared with all the readers of the daily press, I knew little of my former friend and companion.
 
-Umami lo-fi drinking vinegar Carles non reprehenderit irure authentic chia. Cillum non gastropub sartorial pop-up hoodie bespoke Helvetica wolf. Intelligentsia bespoke raw denim, duis Godard dolor roof party sunt pug mollit. Blog +1 vero keytar lo-fi mollit vegan brunch, scenester next level drinking vinegar. Williamsburg PBR ugh aute, small batch pug yr mollit. Ennui cray butcher tempor, drinking vinegar ex cillum kogi salvia fugiat ugh Vice Echo Park. Nisi Intelligentsia mixtape mollit, stumptown hashtag laboris readymade cupidatat.
+One night--it was on the twentieth of March, 1888--I was returning from a journey to a patient (for I had now returned to civil practice), when my way led me through Baker Street. As I passed the well-remembered door, which must always be associated in my mind with my wooing, and with the dark incidents of the Study in Scarlet, I was seized with a keen desire to see Holmes again, and to know how he was employing his extraordinary powers. His rooms were brilliantly lit, and, even as I looked up, I saw his tall, spare figure pass twice in a dark silhouette against the blind. He was pacing the room swiftly, eagerly, with his head sunk upon his chest and his hands clasped behind him. To me, who knew his every mood and habit, his attitude and manner told their own story. He was at work again. He had risen out of his drug-created dreams and was hot upon the scent of some new problem. I rang the bell and was shown up to the chamber which had formerly been in part my own.
 
-Nulla mustache meh, in aute wolf laboris minim. Anim art party master cleanse tattooed eiusmod enim, vinyl est roof party scenester Echo Park sed dreamcatcher gentrify selfies. Laborum polaroid anim direct trade vegan. Farm-to-table retro Austin, et Wes Anderson voluptate Neutra ea chambray bicycle rights bitters fugiat irure velit scenester. Delectus gastropub Tonx banjo gentrify exercitation synth, disrupt Godard magna ethnic elit. Street art 3 wolf moon chillwave incididunt sed literally. Godard readymade assumenda street art, synth banjo authentic craft beer ethnic master cleanse kogi.
+His manner was not effusive. It seldom was; but he was glad, I think, to see me. With hardly a word spoken, but with a kindly eye, he waved me to an armchair, threw across his case of cigars, and indicated a spirit case and a gasogene in the corner. Then he stood before the fire and looked me over in his singular introspective fashion.
+
+"Wedlock suits you," he remarked. "I think, Watson, that you have put on seven and a half pounds since I saw you."
+
+"Seven!" I answered.
+
+"Indeed, I should have thought a little more. Just a trifle more, I fancy, Watson. And in practice again, I observe. You did not tell me that you intended to go into harness."
+"Then, how do you know?"
+
+"I see it, I deduce it. How do I know that you have been getting yourself very wet lately, and that you have a most clumsy and careless servant girl?"
+
+"My dear Holmes," said I, "this is too much. You would certainly have been burned, had you lived a few centuries ago. It is true that I had a country walk on Thursday and came home in a dreadful mess, but as I have changed my clothes I can't imagine how you deduce it. As to Mary Jane, she is incorrigible, and my wife has given her notice, but there, again, I fail to see how you work it out."
+
+He chuckled to himself and rubbed his long, nervous hands together.
+
+"It is simplicity itself," said he; "my eyes tell me that on the inside of your left shoe, just where the firelight strikes it, the leather is scored by six almost parallel cuts. Obviously they have been caused by someone who has very carelessly scraped round the edges of the sole in order to remove crusted mud from it. Hence, you see, my double deduction that you had been out in vile weather, and that you had a particularly malignant boot-slitting specimen of the London slavey. As to your practice, if a gentleman walks into my rooms smelling of iodoform, with a black mark of nitrate of silver upon his right forefinger, and a bulge on the right side of his top-hat to show where he has secreted his stethoscope, I must be dull, indeed, if I do not pronounce him to be an active member of the medical profession."
+
+I could not help laughing at the ease with which he explained his process of deduction. "When I hear you give your reasons," I remarked, "the thing always appears to me to be so ridiculously simple that I could easily do it myself, though at each successive instance of your reasoning I am baffled until you explain your process. And yet I believe that my eyes are as good as yours."
+
+"Quite so," he answered, lighting a cigarette, and throwing himself down into an armchair. "You see, but you do not observe. The distinction is clear. For example, you have frequently seen the steps which lead up from the hall to this room."
+
+"Frequently."
+
+"How often?"
+
+"Well, some hundreds of times."
+
+"Then how many are there?"
+
+"How many? I don't know."
+
 					</script>
 				</section>
         
@@ -195,18 +228,36 @@ Nulla mustache meh, in aute wolf laboris minim. Anim art party master cleanse ta
         <section data-markdown data-state="after">
 					<script type="text/template">
 ## Light Sensor
+
+![Sensor](img/light-sensor.jpg)
 					</script>
 				</section>
         
+<section data-markdown data-state="lightsensor"><script type="text/template">
+```
+var light = new five.Sensor({
+  pin: 'A1',
+  freq: 50
+});
+
+board.repl.inject({ pot: light });
+
+light.on('data', function() {
+  socket.emit('lightsensor', five.Board.map(this.raw, 0, 1024, 0, 255));
+});
+```
+</script></section>
         <section data-markdown data-state="lightsensor">
 					<script type="text/template">
-## Demo
+## Photoresistor
 					</script>
 				</section>
         
         <section data-markdown data-state="afterlight">
 					<script type="text/template">
 ## Flex sensor
+
+![Flex sensor](img/flex-sensor.jpg)
 					</script>
 				</section>
         
@@ -216,20 +267,50 @@ Nulla mustache meh, in aute wolf laboris minim. Anim art party master cleanse ta
         
         <section data-markdown><script type="text/template">
 ## Wii Nunchuk
+
+<ul>
+<li class="fragment">Accelerometer</li>
+<li class="fragment">Joystick</li>
+<li class="fragment">Buttons</li>
+<li class="fragment">$15</li>
+</ul>
 					</script></section>
         
-        <section data-markdown>
+        <section data-markdown data-state="monster">
 					<script type="text/template">
-## Demo
+![Monster](img/monster.svg)
 					</script>
 				</section>
         
-        <section data-markdown>
+        <section data-markdown data-background="img/ardrone.jpg">
 					<script type="text/template">
-## Parrot AR.Drone
+<h2 style="position: relative; top: -280px">Parrot AR.Drone</h2>
 					</script>
 				</section>
        
+        <section data-markdown><script type="text/template">
+ ```
+ npm install ar-drone
+ ```
+
+<pre class="fragment"><code class="javascript">var arDrone = require('ar-drone');
+var client = arDrone.createClient();
+
+client.takeoff();
+
+client
+  .after(5000, function() {
+    this.clockwise(0.5);
+  })
+  .after(3000, function() {
+    this.animate('flipLeft', 15);
+  })
+  .after(1000, function() {
+    this.stop();
+    this.land();
+  });
+</code></pre> 
+        </script></section>
         <section data-markdown><script type="text/template">
 ## Let&rsquo;s get real
 
@@ -258,10 +339,10 @@ https://twitter.com/gsiegman/statuses/368104836228976640
 ## This is Really Important
 				</script></section>
       
-        <section data-markdown><script type="text/template">
+        <section data-markdown data-state="noborder"><script type="text/template">
 ## Geocities
 
-(Loading picture.gif)
+![under construction](img/under-construction.gif)
 				</script></section>
       
         <section data-markdown><script type="text/template">
@@ -366,6 +447,26 @@ https://twitter.com/gsiegman/statuses/368104836228976640
 			});
 		}, false);
 		</script>
+		<style type="text/css">
+			.potentiometer section.present {
+				width: 150%;
+				left: -75%;
+			}
+			.flexsensor section.present {
+				zoom: 200%;
+			}
+			.monster section.present img {
+				background: none;
+				border: 0;
+				box-shadow: none;
+			}
+			.noborder section.present img {
+				background: none;
+				border: 0;
+				box-shadow: none;
+			}
+
+		</style>
 
 	</body>
 </html>
