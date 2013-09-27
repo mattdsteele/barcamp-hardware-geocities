@@ -152,7 +152,7 @@ board.on("ready", function() {
 					</script>
 				</section>
 
-        <section data-markdown>
+        <section data-markdown data-transition="none">
 					<script type="text/template">
 ## Socket.IO
 
@@ -177,7 +177,7 @@ board.on("ready", function() {
 ```			
           </script>
         </section>
-        <section data-markdown>
+        <section data-markdown data-state="potentiometer">
 					<script type="text/template">
 ## Demo
 
@@ -192,19 +192,19 @@ Nulla mustache meh, in aute wolf laboris minim. Anim art party master cleanse ta
 				</section>
         
         
-        <section data-markdown>
+        <section data-markdown data-state="after">
 					<script type="text/template">
 ## Light Sensor
 					</script>
 				</section>
         
-        <section data-markdown>
+        <section data-markdown data-state="lightsensor">
 					<script type="text/template">
 ## Demo
 					</script>
 				</section>
         
-        <section data-markdown>
+        <section data-markdown data-state="afterlight">
 					<script type="text/template">
 ## Flex sensor
 					</script>
@@ -233,7 +233,7 @@ Nulla mustache meh, in aute wolf laboris minim. Anim art party master cleanse ta
 				</section>
        
         <section data-markdown><script type="text/template">
-## Let's get real
+## Let&rsquo;s get real
 
 ### (Turns chair backwards)
 					</script></section>
@@ -319,8 +319,9 @@ https://twitter.com/gsiegman/statuses/368104836228976640
         //parallaxBackgroundSize: '2100px 900px',
         
         // Parallax scrolling
-				parallaxBackgroundImage: 'reveal-parallax-1.jpg',
-				parallaxBackgroundSize: '2100px 900px',
+				parallaxBackgroundImage: 'reveal-parallax-2.jpg',
+				parallaxBackgroundSize: '2128px 1024px',
+		//From http://www.flickr.com/photos/14532612@N06/4168671977/in/photolist-7mnwWM-7tw6uU-8hrYvU-boRPYC-anV2JH-anVeQk-anXQvs-anVfye-8jrC9M-8jrDBP-8jrD7M-anV4Yn-8juU8A-8juV37-anV49T-9EMu2c-8jFNkk-8oLGZi-8oPTm3-7EUKLi-8aquSC-7yyyAY-bUPyrk-8V5mun-8V8p8w-7LJDCD-8V8rhL-8V8mgC-8V5km2-8V5fAx-8V8o65-8V8mNN-8V8kEE-8V5i5B-8V5ob8-8V8oCy-8V8qcA-8V8rRh-7VfBnT-8wWVRk-9EMtXr-7MBk6D-7Mmw8o-eKKcGq-eKKduh
 				
         // Optional libraries used to extend on reveal.js
 				dependencies: [
@@ -332,6 +333,33 @@ https://twitter.com/gsiegman/statuses/368104836228976640
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
+		</script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/jquery.js"></script>
+		<script>
+		var socket;
+		socket = io.connect('http://localhost:3000');
+		Reveal.addEventListener('potentiometer', function() {
+			var text = $('[data-state="potentiometer"].present p');
+			socket.on('potentiometer', function(data) {
+				text.css('font-size', data + 'px');
+			});
+		}, false);
+		Reveal.addEventListener('lightsensor', function() {
+			var background = $('.state-background');
+			console.log(background);
+			socket.on('lightsensor', function(data) {
+				data = Math.round(data);
+				var css ='rgba(' + data + ',' + (255 - data) + ',' + (255 - data) + ', 0.5)' ;
+				if (document.querySelector('[data-state="lightsensor"].present')) {
+					background.css('background-color', css);
+				}
+			});
+		}, false);
+		Reveal.addEventListener('afterlight', function() {
+			var background = $('.state-background');
+			background.css('background', 'transparent');
+		}, false);
 		</script>
 
 	</body>
