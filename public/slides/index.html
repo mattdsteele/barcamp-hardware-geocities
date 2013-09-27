@@ -210,11 +210,9 @@ Nulla mustache meh, in aute wolf laboris minim. Anim art party master cleanse ta
 					</script>
 				</section>
         
-        <section data-markdown>
-					<script type="text/template">
-## Demo
-					</script>
-				</section>
+        <section data-state="flexsensor">
+<canvas id="canvas"></canvas>
+		</section>
         
         <section data-markdown><script type="text/template">
 ## Wii Nunchuk
@@ -336,6 +334,7 @@ https://twitter.com/gsiegman/statuses/368104836228976640
 		</script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="js/jquery.js"></script>
+		<script src="caverush2600.min.js"></script>
 		<script>
 		var socket;
 		socket = io.connect('http://localhost:3000');
@@ -359,6 +358,12 @@ https://twitter.com/gsiegman/statuses/368104836228976640
 		Reveal.addEventListener('afterlight', function() {
 			var background = $('.state-background');
 			background.css('background', 'transparent');
+		}, false);
+		Reveal.addEventListener('flexsensor', function() {
+			socket.on('flex', function(data) {
+				console.log('boom!');
+				ig.input.presses = {gravityflip: true};
+			});
 		}, false);
 		</script>
 

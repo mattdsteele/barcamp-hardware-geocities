@@ -9,8 +9,8 @@ board.on('ready', function() {
     freq: 250
   });
 
-  flex.scale(85, 300).on('data', function() {
-    console.log(five.Board.map(this.raw, 85, 300, 0, 255));
-    console.log(this.scaled, this.raw);
+  flex.on('data', function() {
+    console.log(five.Board.map(this.raw, 100, 300, 0, 100));
+    // console.log(this.raw);
   });
 });

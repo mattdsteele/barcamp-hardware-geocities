@@ -69,6 +69,22 @@ io.sockets.on('connection', function(socket) {
       socket.emit('potentiometer', five.Board.map(this.raw, 0, 1024, 1, 300));
     });
 
+    flex = new five.Sensor({
+      pin: 'A2',
+      freq: 250
+    });
+
+    var flexed = false;
+    flex.on('data', function() {
+      var flexValue = five.Board.map(this.raw, 100, 300, 0, 100);
+      console.log(flexValue);
+      if (!flexed && flexValue < 50) {
+        flexed = true;
+        socket.emit('flex', {});
+      } else if (flexed && flexValue > 50) {
+        flexed = false;
+      }
+  });
     // Create a new `nunchuk` hardware instance.
     nunchuk = new five.Wii.Nunchuk({
       freq: 25
