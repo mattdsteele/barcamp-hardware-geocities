@@ -100,12 +100,10 @@ I've never taken a class on it.
         
         <section data-markdown>
 					<script type="text/template">
-```
-npm install johnny-five
-```
+<pre><code class="fragment">npm install johnny-five</code></pre>
 
 
-<pre><code class="javascript">var five = require("johnny-five"),
+<pre><code class="javascript fragment">var five = require("johnny-five"),
 board = new five.Board();
  
 board.on("ready", function() {
@@ -117,7 +115,7 @@ board.on("ready", function() {
 });
 </code></pre>
 
-<video controls="">
+<video controls="" class="fragment">
   <source src="img/led-strobe.mp4"></source>
   <source src="http://dl.dropbox.com/u/3531958/led-strobe.ogv"></source>
   <source src="http://dl.dropbox.com/u/3531958/led-strobe.webm"></source>
@@ -157,7 +155,7 @@ board.on("ready", function() {
 
         <section data-markdown data-transition="none">
 					<script type="text/template">
-## Socket.IO
+## Potentiometer + Socket.IO
 
 <pre><code class="javascript">var socket = require('socket.io');
 board.on("ready", function() {
@@ -318,13 +316,12 @@ client
 					</script></section>
        
        <section>
-<blockquote class="twitter-tweet"><p>Some people, when confronted with numbers, think &quot;I know, I&#39;ll add them with JavaScript.&quot; Now they have 1.99999999999997 problems.</p>&mdash; Gary Bernhardt (@garybernhardt) <a href="https://twitter.com/garybernhardt/statuses/47763404672344064">March 15, 2011</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+       <img src="img/tweet1.png">
        </section>
        
-        <section data-markdown><script type="text/template">
-https://twitter.com/gsiegman/statuses/368103661500891136
-https://twitter.com/gsiegman/statuses/368104836228976640
+        <section data-markdown data-state="tweets"><script type="text/template">
+       <img src="img/tweet2.png">
+       <img src="img/tweet3.png" class="fragment">
 				</script></section>
           
         <section data-markdown><script type="text/template">
@@ -332,47 +329,74 @@ https://twitter.com/gsiegman/statuses/368104836228976640
 				</script></section>          
 
         <section data-markdown><script type="text/template">
-# Easy
+# JavaScript's advantage
 				</script></section> 
+        <section data-markdown><script type="text/template">
+# Ridiculously Easy
+		</script></section> 
      
         <section data-markdown><script type="text/template">
-## This is Really Important
-				</script></section>
+# This is Really Important
+		</script></section>
       
         <section data-markdown data-state="noborder"><script type="text/template">
-## Geocities
+# Geocities
 
 ![under construction](img/under-construction.gif)
 				</script></section>
       
-        <section data-markdown><script type="text/template">
-> And so I made my first website. Of course it wasn’t how a professional would do it, GeoCities started you with a what-you-see-is-what-you-get editor, one that if we web developers had to use today we’d do so while crying into a gallon tub of ice cream, eating with our left hand and clicking away with our right.
-        </script></section>
+        <section data-markdown data-state="noborder"><script type="text/template">
+![under construction](img/wysiwig.png)
+				</script></section>
 
         <section data-markdown><script type="text/template">
-> But that’s not the point.
-        </script></section>
-        
-        <section data-markdown><script type="text/template">
-# My first website
+![pokecards](img/pokecards.png)
 				</script></section> 
 
         <section data-markdown><script type="text/template">
-# Web Designer's First Websites
+![pokecards](img/designers-first-site.png)
 				</script></section> 
         
+ <section data-background="img/site1.png"></section>
+ <section data-background="img/site2.png"></section>
+        <section data-markdown><script type="text/template">
+# Hardware is the new Geocities
+		</script></section> 
+
         <section data-markdown><script type="text/template">
 # Get Started
+		</script></section> 
+        <section data-markdown><script type="text/template">
+## Try Johnny-Five
 
-* Mess with Johnny-Five
-* Play with C API
-* Learn EE skills - Ohm's Law, Voltage Dividers, etc
-* Learn soldering
-* Join a community - OMG
-				</script></section> 
+https://github.com/rwaldron/johnny-five
+		</script></section> 
+        <section data-markdown><script type="text/template">
+## Learn the C API
+		</script></section> 
+        <section data-markdown><script type="text/template">
+## Learn proper EE
+
+* Voltage, Current, Resistance
+* Ohm's Law
+* Voltage Dividers
+
+https://learn.sparkfun.com/tutorials
+		</script></section> 
 
         <section data-markdown><script type="text/template">
+## Learn to Solder
+
+![solder](img/solder.jpg)
+		</script></section> 
+        <section data-markdown><script type="text/template">
+## Join a community
+
+<img class="fragment" src="img/omg.jpg">
+		</script></section> 
+        <section data-markdown><script type="text/template">
 # Thanks
+### @mattdsteele
 				</script></section> 
         
 			</div>
@@ -464,6 +488,11 @@ https://twitter.com/gsiegman/statuses/368104836228976640
 				background: none;
 				border: 0;
 				box-shadow: none;
+			}
+			.tweets section.present img {
+				zoom: 75%;
+				position: relative;
+				top: -75px;
 			}
 
 		</style>
