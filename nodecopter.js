@@ -29,21 +29,23 @@ board.on("ready", function() {
     if (copter.status === 'up') {
       if (axis === 'y') {
         if (value < 450) {
+          console.log('Going backwards!');
           client.back(0.2);
         } else if (value > 550) {
+          console.log('Going forwards!');
           client.front(0.2);
         } else {
-          console.log('y is zero!');
           client.front(0);
           client.back(0);
         }
       } else if (axis === 'x') {
         if (value < 400) {
+          console.log('Turning left!');
           client.left(0.2);
         } else if (value > 600) {
+          console.log('Turning right!');
           client.right(0.2);
         } else {
-          console.log('x is zero!');
           client.left(0);
           client.right(0);
         }
@@ -62,16 +64,14 @@ board.on("ready", function() {
     axis = event.axis;
       if (axis === 'y') {
         if (value < 400) {
-          console.log('going back');
+          console.log('Elevating!');
           client.up(0.5);
         } else if (value > 600) {
-          console.log('not going back');
+          console.log('Going down!');
           client.down(0.5);
         } else {
-          console.log('y is zero!');
           client.down(0);
           client.up(0);
-          //client.stop();
         }
       }
   });
@@ -96,7 +96,7 @@ board.on("ready", function() {
         client.land();
       }
       if ('z' === event.target.which &&  'down' === type && 'up' === copter.status && !flipped) {
-        console.log('Hover!');
+        console.log('Flip!');
         client.animate('flipLeft', 1000);
         flipped = true;
       }
@@ -116,5 +116,5 @@ board.on("ready", function() {
     });
 
   });
-  console.log('bam, connected');
+  console.log('We\'re in!');
 });

@@ -491,22 +491,22 @@ https://github.com/rwaldron/johnny-five
 			});
 		}, false);
 		Reveal.addEventListener('monster', function() {
-      var monster = $('.monster section.present img');
-      socket.on('nunchuk', function(data) {
-        if (data.change === 'rotate') {
-          var diff = ((data.value - 300) / 400) * 360;
-          monster.css('-webkit-transform', 'rotate(' + (diff + 180) + 'deg)');
-        } else {
-          if (data.axis === 'x') {
-            var diff = (data.value - 100) / 800;
-            var delta = (diff * 100) - 50;
-            monster.css('left', delta + '%');
-          } else {
-            var diff = (data.value - 100) - 350;
-            monster.css('top', '' + (diff * -1) + 'px');
-          }
-        }
-      });
+			var monster = $('.monster section.present img');
+			socket.on('nunchuk', function(data) {
+				if (data.change === 'rotate') {
+					var diff = ((data.value - 300) / 400) * 360;
+					monster.css('-webkit-transform', 'rotate(' + (diff + 180) + 'deg)');
+				} else {
+					if (data.axis === 'x') {
+						var diff = (data.value - 100) / 800;
+						var delta = (diff * 100) - 50;
+						monster.css('left', delta + '%');
+					} else {
+						var diff = (data.value - 100) - 350;
+						monster.css('top', '' + (diff * -1) + 'px');
+					}
+				}
+			});
 			background.css('background', 'transparent');
 		}, false);
 		</script>
