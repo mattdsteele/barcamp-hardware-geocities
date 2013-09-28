@@ -28,22 +28,24 @@ board.on("ready", function() {
     //y: 144 -> 888
     if (copter.status === 'up') {
       if (axis === 'y') {
-        if (value < 480) {
-          client.down(0.5);
-        } else if (value > 520) {
-          client.up(0.5);
+        if (value < 450) {
+          client.back(0.2);
+        } else if (value > 550) {
+          client.front(0.2);
         } else {
           console.log('y is zero!');
-          client.stop();
+          client.front(0);
+          client.back(0);
         }
       } else if (axis === 'x') {
-        if (value < 480) {
-          client.counterClockwise(0.5);
-        } else if (value > 520) {
-          client.clockwise(0.5);
+        if (value < 400) {
+          client.left(0.2);
+        } else if (value > 600) {
+          client.right(0.2);
         } else {
           console.log('x is zero!');
-          client.stop();
+          client.left(0);
+          client.right(0);
         }
       }
     }
@@ -58,29 +60,20 @@ board.on("ready", function() {
   nunchuk.accelerometer.on( "change", function( err, event ) {
     var value = event.target[event.axis],
     axis = event.axis;
-    if ('up' === copter.status) {
       if (axis === 'y') {
         if (value < 400) {
           console.log('going back');
-          client.back(0.2);
+          client.up(0.5);
         } else if (value > 600) {
           console.log('not going back');
-          client.front(0.2);
+          client.down(0.5);
         } else {
           console.log('y is zero!');
-          client.stop();
-        }
-      } else if (axis === 'x') {
-        if (value < 400) {
-          client.left(0.2);
-        } else if (value > 600) {
-          client.right(0.2);
-        } else {
-          console.log('x is zero!');
-          client.stop();
+          client.down(0);
+          client.up(0);
+          //client.stop();
         }
       }
-    }
   });
 
   [ "down", "up", "hold" ].forEach(function( type ) {
@@ -102,13 +95,10 @@ board.on("ready", function() {
         copter.status = 'down';
         client.land();
       }
-      if ('z' === event.target.which &&  'down' === type && 'up' === copter.status) {
-        // console.log('Hover!');
-        // client.stop();
-      } else if ('z' === event.target.which && 'hold' === type && !flipped) {
-        console.log('flipped!');
-        flipped = true;
+      if ('z' === event.target.which &&  'down' === type && 'up' === copter.status && !flipped) {
+        console.log('Hover!');
         client.animate('flipLeft', 1000);
+        flipped = true;
       }
       var data = {
         change: 'button',

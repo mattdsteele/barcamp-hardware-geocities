@@ -273,6 +273,24 @@ light.on('data', function() {
 <li class="fragment">$15</li>
 </ul>
 					</script></section>
+<section>
+<h2>Wii Nunchuk</h2>
+<pre><code class="javascript">
+board.on("ready", function() {
+  nunchuk = new five.Wii.Nunchuk({
+    freq: 50
+  });
+
+  nunchuk.joystick.on( "change", function( err, event ) {
+    console.log(
+      "joystick " + event.axis,
+      event.target[ event.axis ],
+      event.axis, event.direction
+    );
+  });
+});
+</code></pre>
+</section>
         
         <section data-markdown data-state="monster">
 					<script type="text/template">
@@ -349,8 +367,7 @@ client
 ![under construction](img/wysiwig.png)
 				</script></section>
 
-        <section data-markdown><script type="text/template">
-![pokecards](img/pokecards.png)
+        <section data-markdown data-background="img/pokecards.png"><script type="text/template">
 				</script></section> 
 
         <section data-markdown><script type="text/template">
@@ -372,20 +389,22 @@ client
 https://github.com/rwaldron/johnny-five
 		</script></section> 
         <section data-markdown><script type="text/template">
+## Learn Computer Engineering
+
+<ul>
+<li class="fragment">Voltage, Current, Resistance</li>
+<li class="fragment">Ohm's Law</li>
+<li class="fragment">Voltage Dividers</li>
+</ul>
+
+<p class="fragment">https://learn.sparkfun.com/tutorials</p>
+		</script></section> 
+        <section data-markdown><script type="text/template">
 ## Learn the C API
 		</script></section> 
-        <section data-markdown><script type="text/template">
-## Learn proper EE
-
-* Voltage, Current, Resistance
-* Ohm's Law
-* Voltage Dividers
-
-https://learn.sparkfun.com/tutorials
-		</script></section> 
 
         <section data-markdown><script type="text/template">
-## Learn to Solder
+## Solder
 
 ![solder](img/solder.jpg)
 		</script></section> 
@@ -470,6 +489,25 @@ https://learn.sparkfun.com/tutorials
 				ig.input.presses = {gravityflip: true};
 			});
 		}, false);
+		Reveal.addEventListener('monster', function() {
+      var monster = $('.monster section.present img');
+      socket.on('nunchuk', function(data) {
+        if (data.change === 'rotate') {
+          var diff = ((data.value - 300) / 400) * 360;
+          monster.css('-webkit-transform', 'rotate(' + (diff + 180) + 'deg)');
+        } else {
+          if (data.axis === 'x') {
+            var diff = (data.value - 100) / 800;
+            var delta = (diff * 100) - 50;
+            monster.css('left', delta + '%');
+          } else {
+            var diff = (data.value - 100) - 350;
+            monster.css('top', '' + (diff * -1) + 'px');
+          }
+        }
+      });
+			background.css('background', 'transparent');
+		}, false);
 		</script>
 		<style type="text/css">
 			.potentiometer section.present {
@@ -483,6 +521,8 @@ https://learn.sparkfun.com/tutorials
 				background: none;
 				border: 0;
 				box-shadow: none;
+        transition: all 0.2s;
+        position: relative;
 			}
 			.noborder section.present img {
 				background: none;

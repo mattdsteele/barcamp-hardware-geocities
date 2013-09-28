@@ -35,19 +35,17 @@ var io = require('socket.io').listen(server);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+var five = require("johnny-five"),
+    board, nunchuk;
 
-io.sockets.on('connection', function(socket) {
-  var five = require("johnny-five"),
-  board, nunchuk;
+board = new five.Board();
 
-  board = new five.Board();
+board.on("ready", function() {
+  io.sockets.on('connection', function(socket) {
 
-  board.on("ready", function() {
 
-    console.log('made it');
     new five.Pin("A4").low(); //DATA
     new five.Pin("A5").low(); //CLK
-    console.log('made it');
 
     var potentiometer = new five.Sensor({
       pin: 'A0',
@@ -77,7 +75,6 @@ io.sockets.on('connection', function(socket) {
     var flexed = false;
     flex.on('data', function() {
       var flexValue = five.Board.map(this.raw, 100, 300, 0, 100);
-      console.log(flexValue);
       if (!flexed && flexValue < 50) {
         flexed = true;
         socket.emit('flex', {});
@@ -91,22 +88,22 @@ io.sockets.on('connection', function(socket) {
     });
     nunchuk.joystick.on( "change", function( err, event ) {
       var data = {
-        change: 'joystick',
+        change: 'position',
           axis: event.axis,
           value: event.target[event.axis]
       };
-      socket.emit('data', data);
+      socket.emit('nunchuk', data);
     });
 
     nunchuk.accelerometer.on( "change", function( err, event ) {
       var distance = event.target[event.axis];
-      if (event.axis != 'z' && (distance < 400 || distance > 600)) {
+      if (event.axis === 'x') {
         var data = {
-          change: 'axis',
+          change: 'rotate',
           axis: event.axis,
           value: event.target[event.axis]
         };
-        socket.emit('data', data);
+        socket.emit('nunchuk', data);
       }
     });
 
