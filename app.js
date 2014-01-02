@@ -45,15 +45,15 @@ board.on("ready", function() {
 });
 
 var runSensors = function(board, five, socket) {
-  var pot = require('./pot');
+  var pot = require('./five/pot');
   pot.runSensor(board, five, socket);
 
-  var light = require('./light');
+  var light = require('./five/light');
   light.runSensor(board, five, socket);
 
-  var flex = require('./flex');
+  var flex = require('./five/flex');
   flex.runSensor(five, socket);
 
-  var nunchuk = require('./nunchuk');
+  var nunchuk = require('./five/nunchuk');
   nunchuk.runSensor(five, socket);
 };
