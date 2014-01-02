@@ -74,11 +74,13 @@ board.on("ready", function() {
 
     var flexed = false;
     flex.on('data', function() {
-      var flexValue = five.Board.map(this.raw, 100, 300, 0, 100);
-      if (!flexed && flexValue < 50) {
+      var flexValue = this.raw,
+        threshold = 130,
+        minValue = 5;
+      if (!flexed && flexValue < threshold && flexValue > minValue) {
         flexed = true;
         socket.emit('flex', {});
-      } else if (flexed && flexValue > 50) {
+      } else if (flexed && flexValue > threshold) {
         flexed = false;
       }
   });
