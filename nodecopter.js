@@ -95,10 +95,9 @@ board.on("ready", function() {
         copter.status = 'down';
         client.land();
       }
-      if ('z' === event.target.which &&  'down' === type && 'up' === copter.status && !flipped) {
-        console.log('Flip!');
-        client.animate('flipLeft', 1000);
-        flipped = true;
+      if ('z' === event.target.which && 'down' === type && 'up' === copter.status) {
+        console.log('HOVER');
+        client.stop();
       }
       var data = {
         change: 'button',
