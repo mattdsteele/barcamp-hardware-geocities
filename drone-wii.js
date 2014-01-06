@@ -116,4 +116,5 @@ board.on("ready", function() {
 
   });
   console.log('We\'re in!');
+  require('ar-drone-png-stream')(client, {port: 8000});
 });
