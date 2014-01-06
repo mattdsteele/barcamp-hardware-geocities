@@ -2,6 +2,8 @@ var five = require("johnny-five"),
     board, nunchuk;
 
 board = new five.Board();
+var hSensitivity = 0.3,
+  vSensitivity = 0.5;
 
 var arDrone = require('ar-drone'),
     client = arDrone.createClient(),
@@ -30,10 +32,10 @@ board.on("ready", function() {
       if (axis === 'y') {
         if (value < 450) {
           console.log('Going backwards!');
-          client.back(0.2);
+          client.back(hSensitivity);
         } else if (value > 550) {
           console.log('Going forwards!');
-          client.front(0.2);
+          client.front(hSensitivity);
         } else {
           client.front(0);
           client.back(0);
@@ -41,10 +43,10 @@ board.on("ready", function() {
       } else if (axis === 'x') {
         if (value < 400) {
           console.log('Turning left!');
-          client.left(0.2);
+          client.left(hSensitivity);
         } else if (value > 600) {
           console.log('Turning right!');
-          client.right(0.2);
+          client.right(hSensitivity);
         } else {
           client.left(0);
           client.right(0);
@@ -63,12 +65,12 @@ board.on("ready", function() {
     var value = event.target[event.axis],
     axis = event.axis;
       if (axis === 'y') {
-        if (value < 400) {
+        if (value < 300) {
           console.log('Elevating!');
-          client.up(0.5);
-        } else if (value > 600) {
+          client.up(vSensitivity);
+        } else if (value > 700) {
           console.log('Going down!');
-          client.down(0.5);
+          client.down(vSensitivity);
         } else {
           client.down(0);
           client.up(0);
@@ -84,8 +86,7 @@ board.on("ready", function() {
       if (type === 'hold' && 'c' === event.target.which && 'down' === copter.status) {
         console.log('Taking off!');
         client.disableEmergency();
-        client.ftrim();
-        client.after(2000, function() {
+        client.after(20, function() {
           this.takeoff();
           this.stop();
           copter.status = 'up';
