@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
-<head>
-  <style>
-  video {
-    width: 100%;
-  }
-  </style>
-</head>
-<body>
-  <video autoplay></video>
-<script>
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+  <head>
+    <title>Video</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+        text-align: center;
+        background-color: #F0DB4F;
+      }
+      video {
+        width: 900px;
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay></video>
+    <script>
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-var constraints = {audio: false, video: true};
-var video = document.querySelector("video");
+      var constraints = {audio: false, video: true};
+      var video = document.querySelector("video");
 
-function successCallback(stream) {
-  window.stream = stream; // stream available to console
-  if (window.URL) {
-    video.src = window.URL.createObjectURL(stream);
-  } else {
-    video.src = stream;
-  }
-  video.play();
-}
+      function successCallback(stream) {
+        window.stream = stream; // stream available to console
+        if (window.URL) {
+          video.src = window.URL.createObjectURL(stream);
+          } else {
+          video.src = stream;
+        }
+        video.play();
+      }
 
-function errorCallback(error){
-  console.log("navigator.getUserMedia error: ", error);
-}
+      function errorCallback(error){
+        console.log("navigator.getUserMedia error: ", error);
+      }
 
-navigator.getUserMedia(constraints, successCallback, errorCallback);
-</script>
-</body>
+      navigator.getUserMedia(constraints, successCallback, errorCallback);
+    </script>
+  </body>
 </html>
