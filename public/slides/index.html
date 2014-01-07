@@ -432,21 +432,23 @@ https://github.com/rwaldron/johnny-five
         <section data-markdown><script type="text/template">
 ## NodeBots Events
 
-* [NodeBots.io](http://nodebots.io/)
-* [International NodeBots Day](http://nodebotsday.com/)
+<ul>
+  <li class="fragment">[NodeBots.io](http://nodebots.io/)  </li>
+  <li class="fragment">[International NodeBots Day](http://nodebotsday.com/) </li>
+  <li class="fragment">[HOW Conf](http://www.howconf.org)</li>
+  <img class="fragment" src="img/omg.jpg">
+</ul>
 
         </script></section> 
         <section data-markdown><script type="text/template">
-## Learn the C API
+## Learn C (optional)
 		</script></section> 
-        <section data-markdown><script type="text/template">
-## Join a community
-
-<img class="fragment" src="img/omg.jpg">
-		</script></section> 
-        <section data-markdown><script type="text/template">
+        <section data-markdown data-state="theend"><script type="text/template">
 # Thanks
 ### @mattdsteele
+<video controls loop muted id="typingbot">
+  <source src="img/typingbot.mp4"></source>
+</video>
 				</script></section> 
         
 			</div>
@@ -491,6 +493,13 @@ https://github.com/rwaldron/johnny-five
 		<script src="js/jquery.js"></script>
 		<script src="caverush2600.min.js"></script>
 		<script src="client.js"></script>
+    <script>
+Reveal.addEventListener('theend', function() {
+  var video = document.querySelector('#typingbot');
+  video.loop = true;
+  video.play();
+}, false);
+    </script>
 		<style type="text/css">
 			.flexsensor section.present {
 				zoom: 200%;
