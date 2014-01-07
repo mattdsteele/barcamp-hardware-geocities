@@ -80,7 +80,6 @@ board.on("ready", function() {
 
   [ "down", "up", "hold" ].forEach(function( type ) {
 
-    var flipped = false;
     nunchuk.on( type, function( err, event ) {
       //takeoff
       if (type === 'hold' && 'c' === event.target.which && 'down' === copter.status) {
