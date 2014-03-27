@@ -11,6 +11,6 @@
     "less-middleware": "*",
     "socket.io": "~0.9.16",
     "johnny-five": "~0.7.3",
-    "ar-drone": "~0.2.0"
+    "ar-drone": "~0.3.0"
   }
 }
