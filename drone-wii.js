@@ -8,7 +8,8 @@ var hSensitivity = 0.3,
 var arDrone = require('ar-drone'),
     client = arDrone.createClient(),
     copter = {
-      status: 'down'
+      status: 'down',
+      moving: false
     };
 
 
@@ -24,6 +25,11 @@ board.on("ready", function() {
     freq: 25
   });
   nunchuk.joystick.on( "change", function( err, event ) {
+    if (!copter.moving) {
+      console.log('nope');
+      return;
+    }
+    console.log('yup');
     var axis = event.axis,
       value = event.target[axis];
     //x: 108 -> 896
@@ -96,7 +102,12 @@ board.on("ready", function() {
         client.land();
       }
       if ('z' === event.target.which && 'down' === type && 'up' === copter.status) {
-        console.log('HOVER');
+        console.log('Moving!');
+        copter.moving = true;
+      }
+      if ('z' === event.target.which && 'up' === type && 'up' === copter.status) {
+        console.log('Stopping!');
+        copter.moving = false;
         client.stop();
       }
       var data = {
